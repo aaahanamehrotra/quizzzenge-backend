@@ -5,13 +5,16 @@ const cors = require('cors');
 const idSchema = require('./model/idSchema')
 
 
+require('dotenv').config()
+
 const app = express()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json())
       
-uri = 'mongodb+srv://aaahana:TESTtest1234@cluster0.j2f4s.mongodb.net/quiz?retryWrites=true&w=majority'
+// uri = 'mongodb+srv://aaahana:TESTtest1234@cluster0.j2f4s.mongodb.net/quiz?retryWrites=true&w=majority'
+uri = process.env.MONGO_URI
 
 mongoose.connect(uri, () => console.log("hello"))
 
